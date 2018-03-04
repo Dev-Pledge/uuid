@@ -1,0 +1,22 @@
+{
+  "name": "devpledge/uuid",
+  "description": "DevPledge UUID generator for specific entities.",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jim Wright",
+      "email": "jmwri93@gmail.com"
+    }
+  ],
+  "require-dev": {
+    "phpunit/phpunit": "*"
+  },
+  "require": {
+    "ramsey/uuid": "^3.7"
+  },
+  "autoload": {
+    "psr-4": {
+      "DevPledge\\Uuid\\": "src/"
+    }
+  }
+}
