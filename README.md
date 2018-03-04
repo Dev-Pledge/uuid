@@ -10,6 +10,9 @@ Available entities:
 
 # Usage
 ```
+composer require devpledge/uuid
+```
+```
 use \DevPledge\Uuid\Uuid;
 
 echo UUID::make('user');
