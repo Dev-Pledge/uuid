@@ -10,7 +10,7 @@ Available entities:
 
 # Usage
 ```
-composer require devpledge/uuid
+composer require dev-pledge/uuid
 ```
 ```
 use \DevPledge\Uuid\Uuid;
