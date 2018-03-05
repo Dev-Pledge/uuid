@@ -15,5 +15,5 @@ composer require devpledge/uuid
 ```
 use \DevPledge\Uuid\Uuid;
 
-echo UUID::make('user');
+echo UUID::make('user')->toString();
 ```
