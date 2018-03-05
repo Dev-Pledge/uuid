@@ -10,7 +10,7 @@ Available entities:
 * user
 * problem
 * pledge
-* solution
+* solutions
 
 # Usage
 ```
