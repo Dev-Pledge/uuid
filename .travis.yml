@@ -1,17 +1,21 @@
 env:
   global:
-    - CC_TEST_REPORTER_ID=8928e49af114f6dc660013fca21d448b80a02d8217894942800b4ebc4c619185
-    - GIT_COMMITTED_AT=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then git log -1 --pretty=format:%ct; else git log -1 --skip 1 --pretty=format:%ct; fi)
+  - GIT_COMMITTED_AT=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then git log -1 --pretty=format:%ct;
+    else git log -1 --skip 1 --pretty=format:%ct; fi)
+  matrix:
+    secure: LwZmkB1XlfsStqgnPr5dwh88niNVyycikYna14wdnVYY8EV5ISyLqk7wWg6Or47XxvylSJK+J6g22Wsat7HMM0n//furEnf+6W6sHf8IbPwUcuYBWyGTtUsQRbFkcO4Rs0NiDyI9If0eiGSaAwJHTA6LJOjjlXxhg0ZagLmUxSI/xPvyfCTu9XI8pZQiCwg1uPLpPCJsYY025KHx0clVY2bI7MVTGC2Nj1U99yq5uGTJLbT3l6XmLPk4WlDsGc+exi4eupr6AOqDvQfS4/N7P5k/GaNh0cM8CuqzsNIWB2Wk5raGHoyApuquMgk5rdNn0k/ah+m9iSw/uS/H2yPZmUZ474DI+TwhhN7VtwfDEarLKe314IkynXewxTyTUiT/xJ/JOuZ8AIJMCdTAFQQhfAOoVCClbZ9xl2i7RZWSoEDAu/ODrHbwnggKv0zVD/t0eh7FoZzK6Ty527S1lpbRKRyVQXVtcFfoSFUKWShY6Or0MRcu6Pvcekw28Krht/lLQHUIkM8NaTCzlnuFSXI+MvKYhThTcj5ML3OYeQCi60xmOeNj4UKTILmB5tZ3E73xh96F3MNk8o9p75psfxc22vFzl0EB9y3iXp0aGKhORGtxtc+/0oX28Y34Jx3HA4HdMF26OtJlOye9h+DAXYI1h2yDe1hvjq3lNYGMdWui0fQ=
 language: php
 php:
-  - 7.2
+- 7.2
 before_script:
-  - "composer require codeclimate/php-test-reporter --dev"
-  - "composer install"
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
+- composer require codeclimate/php-test-reporter --dev
+- composer install
+- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+  > ./cc-test-reporter
+- chmod +x ./cc-test-reporter
+- "./cc-test-reporter before-build"
 script:
-  - ./vendor/bin/phpunit
+- "./vendor/bin/phpunit"
 after_script:
-  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
+- if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build --exit-code
+  $TRAVIS_TEST_RESULT; fi
