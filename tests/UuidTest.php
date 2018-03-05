@@ -46,12 +46,6 @@ class UuidTest extends TestCase
         self::assertEquals('usr-1e0314d2-abd3-4b13-b5e1-d59d74e2382b', $uuid->toString());
     }
 
-    public function testParsingThrowsWhenNoPrefix()
-    {
-        $this->expectException(\InvalidArgumentException::class);
-        new Uuid('-1e0314d2-abd3-4b13-b5e1-d59d74e2382b');
-    }
-
     public function testThrowsWhenInvalidUuidLength()
     {
         $this->expectException(\InvalidArgumentException::class);
