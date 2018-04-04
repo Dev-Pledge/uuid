@@ -16,10 +16,17 @@ class UuidTest extends TestCase
      * @var []string
      */
     protected static $entities = [
-        'user' => 'usr',
+        'comment' => 'cmt',
+        'currency' => 'cur',
+        'kudos' => 'kud',
+        'org' => 'org',
+        'payment' => 'pay',
+        'pledge' => 'plg',
         'problem' => 'prb',
         'solution' => 'sol',
-        'pledge' => 'plg',
+        'topic' => 'top',
+        'user' => 'usr',
+        'user_group' => 'usg',
     ];
 
     public function testMake()
@@ -77,5 +84,20 @@ class UuidTest extends TestCase
     {
         $this->expectException(\InvalidArgumentException::class);
         Uuid::make('potato');
+    }
+
+    public function testAllEntitiesCovered()
+    {
+        $missing = [];
+        foreach (Uuid::getEntities() as $entity => $prefix) {
+            if (array_key_exists($entity, self::$entities)) {
+                continue;
+            }
+            if (self::$entities === $prefix) {
+                continue;
+            }
+            $missing[] = $entity . ' => ' . $prefix;
+        }
+        $this->assertEmpty($missing, 'Entities are not tested: ' . implode(', ', $missing));
     }
 }

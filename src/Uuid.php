@@ -11,10 +11,17 @@ use Ramsey\Uuid\Uuid as Ruuid;
 class Uuid
 {
     protected static $entities = [
-        'user' => 'usr',
+        'comment' => 'cmt',
+        'currency' => 'cur',
+        'kudos' => 'kud',
+        'org' => 'org',
+        'payment' => 'pay',
+        'pledge' => 'plg',
         'problem' => 'prb',
         'solution' => 'sol',
-        'pledge' => 'plg',
+        'topic' => 'top',
+        'user' => 'usr',
+        'user_group' => 'usg',
     ];
 
     protected static $uuidLength = 36;
@@ -43,6 +50,14 @@ class Uuid
             $this->setPrefix($prefix);
             $this->setUuid($uuid);
         }
+    }
+
+    /**
+     * @return array
+     */
+    public static function getEntities(): array
+    {
+        return self::$entities;
     }
 
     /**
