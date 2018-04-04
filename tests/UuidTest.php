@@ -100,4 +100,18 @@ class UuidTest extends TestCase
         }
         $this->assertEmpty($missing, 'Entities are not tested: ' . implode(', ', $missing));
     }
+
+    public function testNoDuplicates()
+    {
+        $entities = array_keys(self::$entities);
+        $uniqueEntities = array_unique($entities);
+        $prefixes = array_values(self::$entities);
+        $uniquePrefixes = array_unique($prefixes);
+
+        $duplicateEntities = array_diff_assoc($entities, $uniqueEntities);
+        $duplicatePrefixes = array_diff_assoc($prefixes, $uniquePrefixes);
+
+        $this->assertEmpty($duplicateEntities, 'Duplicate entities: ' . implode(', ', $duplicateEntities));
+        $this->assertEmpty($duplicatePrefixes, 'Duplicate prefixes: ' . implode(', ', $duplicatePrefixes));
+    }
 }
